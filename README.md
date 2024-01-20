@@ -31,7 +31,8 @@
 1. **Data Wrangling:**  
 
 > 1. Create a database
-> 2. Create tables with its data type, set **NOT NULL** for each column and import data
+> 2. Create tables with its data type, set **NOT NULL** for each column
+> 3. Import data with Data Import Wizard
 
 2. **Feature Engineering:** Create new columns from existing ones. 
 
