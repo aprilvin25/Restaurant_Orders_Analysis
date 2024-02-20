@@ -1,10 +1,9 @@
-# Analyzing Restaurant Orders Using SQL: A Step-by-Step Guide
+# Analyzing Restaurant Orders Using SQL: A Step-by-Step Guide 
+https://medium.com/@danmarques.ai/data-cleaning-with-sql-1ef7caae4fcc 
 
 
 ## Aim of the Project
 In the food industry, an understanding of customer preferences is essential for having a successful business. This project dives into questions related to customer behavior and sales, exploring questions such as ‘What is the most popular cuisine?,’ ‘What is the average daily cost of sales?,’ and ‘Which day of the week have the highest record of sales?’
-
-
 
 
 ## About the Data
@@ -48,8 +47,44 @@ Source of data: https://mavenanalytics.io/data-playground
 
 3. **Exploratory Data Analysis (EDA):** Analyze and answer the business questions listed below.
 > SQL Techniques employed:
-  - 
-  - 
+  - Creating tables --> organized data and defined data types and lengths for each column
+  - Left join --> combined two tables together to gather relevant columns matching all records from the left table
+  - GROUP BY --> grouped data to perform aggragate functions and discover trends within distinct categories
+
+ORDER BY:
+
+Sorted results to facilitate easier interpretation and identification of key patterns.
+Adding New Columns (Feature Engineering):
+
+Introduced additional columns to capture and highlight essential features for a more nuanced analysis.
+SUM Function:
+
+Calculated cumulative totals using the SUM function, providing a holistic view of aggregated values.
+CASE Statement:
+
+Implemented conditional logic using the CASE statement for customized categorization and analysis.
+Average Function:
+
+Calculated average values to gain insights into overall trends and patterns.
+COUNT Function:
+
+Utilized the COUNT function to quantify occurrences and assess the frequency of particular events.
+ROUND Function:
+
+Applied the ROUND function to ensure precision in numerical values and enhance readability.
+Aliases:
+
+Introduced aliases for columns and tables, enhancing code readability and simplifying complex queries.
+IN Statement:
+
+Leveraged the IN statement for efficient filtering based on multiple specified values.
+ALTER TABLE Statement:
+
+Dynamically modified table structures to adapt to evolving analytical needs.
+
+
+
+
 
 
 ## Business Questions To Answer
