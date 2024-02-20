@@ -48,7 +48,8 @@ Source of data: https://mavenanalytics.io/data-playground
 
 3. **Exploratory Data Analysis (EDA):** Analyze and answer the business questions listed below.
 > SQL Techniques employed:
->> 1.  hi
+  - 
+  - 
 
 
 ## Business Questions To Answer
