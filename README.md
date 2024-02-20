@@ -4,7 +4,7 @@ Article: https://medium.com/@aprilvin25/analyzing-restaurant-orders-using-sql-st
 
 
 ## Aim of the Project
-In the food industry, an understanding of customer preferences is essential for having a successful business. This project dives into questions related to customer behavior and sales, exploring questions such as ‘What is the most popular cuisine?,’ ‘What is the average daily cost of sales?,’ and ‘Which day of the week have the highest record of sales?’
+In the food industry, an understanding of customer preferences is essential for having a successful business. This project dives into questions related to customer behavior and sales, exploring questions such as ‘What is the most popular cuisine?,’ ‘What is the average daily cost of sales?,’ and ‘Which days of the week have the highest record of sales?’
 
 
 ## About the Data
