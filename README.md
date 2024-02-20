@@ -1,5 +1,6 @@
 # Analyzing Restaurant Orders Using SQL: A Step-by-Step Guide 
-https://medium.com/@danmarques.ai/data-cleaning-with-sql-1ef7caae4fcc 
+
+Article: https://medium.com/@aprilvin25/analyzing-restaurant-orders-using-sql-structured-query-language-a-step-by-step-guide-bb8b1a21bdd3
 
 
 ## Aim of the Project
