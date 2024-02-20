@@ -49,41 +49,15 @@ Source of data: https://mavenanalytics.io/data-playground
 > SQL Techniques employed:
   - Creating tables --> organized data and defined data types and lengths for each column
   - Left join --> combined two tables together to gather relevant columns matching all records from the left table
+  - CASE statements --> used conditional logic to categorize values 
   - GROUP BY --> grouped data to perform aggragate functions and discover trends within distinct categories
-
-ORDER BY:
-
-Sorted results to facilitate easier interpretation and identification of key patterns.
-Adding New Columns (Feature Engineering):
-
-Introduced additional columns to capture and highlight essential features for a more nuanced analysis.
-SUM Function:
-
-Calculated cumulative totals using the SUM function, providing a holistic view of aggregated values.
-CASE Statement:
-
-Implemented conditional logic using the CASE statement for customized categorization and analysis.
-Average Function:
-
-Calculated average values to gain insights into overall trends and patterns.
-COUNT Function:
-
-Utilized the COUNT function to quantify occurrences and assess the frequency of particular events.
-ROUND Function:
-
-Applied the ROUND function to ensure precision in numerical values and enhance readability.
-Aliases:
-
-Introduced aliases for columns and tables, enhancing code readability and simplifying complex queries.
-IN Statement:
-
-Leveraged the IN statement for efficient filtering based on multiple specified values.
-ALTER TABLE Statement:
-
-Dynamically modified table structures to adapt to evolving analytical needs.
-
-
-
+  - ORDER BY --> sorted results to analyze key patterns
+  - Feature Engineering --> created additional columns to capture a better analysis
+  - IN statement --> efficient way of filtering in the WHERE statment based on multiple specified values
+  - COUNT function --> to quantify
+  - Aliases --> enhance code readability
+  - SUM & AVERAGE functions --> calculated total and average values for overall trends
+  - ROUND function --> to ensure precision and for better readability 
 
 
 
@@ -95,11 +69,17 @@ Dynamically modified table structures to adapt to evolving analytical needs.
 2. What is the average price for each category (type of cuisine)?
 3. What is the average amount of customers who come in for each day of the week (for the 3 months of data)?
 
+### Customer Questions
 
-### Product Questions
+1. How many order items (order_details_id) did each customer order (order_id)? 
+What was the least amount of items ordered and the greatest amount?
+2. What time of day is the busiest, on average?
+3. What is the total amount of customers that have come in each day of the week?
+   
+### Menu Item Questions
 
-1. ----
-2. ----
+1. How many unique food menu items does this restaurant have?
+2. What categories (cuisine) does this restaurant have to offer?
 
 ### Sales Questions
 
@@ -108,80 +88,7 @@ Dynamically modified table structures to adapt to evolving analytical needs.
 3. What is the gross sales for each category (cuisine) in total? How about for each month? Each Day?
 4. Which cuisines should we focus on developming more menu items for
 based on the data?
-
-/* What were the number of sales made in each time of the day
-per weekday? */ 
-
-/* Get each category (cuisine) and add a column showing "Good," "Bad," and "Average".
-Mark "Good" if it's greater than the average sales and "Bad" if it's lower than the average sales.*/
-
-### Customer Questions
-
-1. ----
-2. ----
-
-
-
-
-
-
-
-
-
--- ---------------------------------------------------------------------------------------
--- --------------------------- Customer QUESTIONS -----------------------------------------
-
-/* How many order items (order_details_id) did each customer order (order_id)? 
-What was the least amount of items ordered and the greatest amount? */
-SELECT order_id AS customer, 
-	COUNT(order_details_id) AS number_of_items_ordered
-FROM order_details
-GROUP BY order_id 
-ORDER BY number_of_items_ordered DESC;
-
--- What time of day is the busiest, on average?
-/* S1) making the inner query to find the total number of customers 
-per time_of_day in each day of the week and month */
-SELECT COUNT(DISTINCT order_id) AS number_of_customers, time_of_day, month, day_name
-FROM order_details
-GROUP BY time_of_day, month, day_name 
-ORDER BY number_of_customers DESC;
-
-/* S2) creating a subquery to find the average number of customers that order during each time
-of the day */
-SELECT ROUND(AVG(number_of_customers),0) AS avg_number_of_customers, time_of_day 
-FROM (
-	SELECT COUNT(DISTINCT order_id) AS number_of_customers, time_of_day, month, day_name
-	FROM order_details
-	GROUP BY time_of_day, month, day_name 
-	ORDER BY number_of_customers DESC
-    ) AS total_customers_per_time_of_day
-GROUP BY time_of_day;
-
-
--- What is the total amount of customers that have come in each day of the week?
-SELECT COUNT(order_id) AS number_of_customers, day_name
-FROM order_details
-GROUP BY day_name ORDER BY number_of_customers DESC;
-
-
--- ----------------------------------------------------------------------------------------
--- --------------------------- MENU ITEM QUESTIONS ----------------------------------------
-
--- How many unique food menu items does this restaurant have?
-SELECT COUNT(DISTINCT menu_item_id) AS number_of_menu_items
-FROM menu_items;
-
--- What categories (cuisine) does this restaurant have to offer?
-SELECT DISTINCT category 
-FROM menu_items;
-
-
--- ------------------------------------------------------------------------------------------------
--- Shows the two tables joined: 
-SELECT order_details.order_details_id, order_details.order_id, order_details.month,
-order_details.day_name, order_details.time_of_day, menu_items.menu_item_id, 
-menu_items.item_name, menu_items.category, menu_items.price
-FROM order_details
-	LEFT JOIN menu_items
-		ON menu_items.menu_item_id = order_details.item_id;
+5. What were the number of sales made in each time of the day
+per weekday?
+6. Get each category (cuisine) and add a column showing "Good," "Bad," and "Average".
+Mark "Good" if it's greater than the average sales and "Bad" if it's lower than the average sales.
