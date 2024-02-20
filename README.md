@@ -5,6 +5,8 @@
 In the food industry, an understanding of customer preferences is essential for having a successful business. This project dives into questions related to customer behavior and sales, exploring questions such as ‘What is the most popular cuisine?,’ ‘What is the average daily cost of sales?,’ and ‘Which day of the week have the highest record of sales?’
 
 
+
+
 ## About the Data
 This data set comes from Maven Analytics Data Playground. This dataset contains data for a quarter, specifically January, February and March. The order_details table comprises 12,097 rows, while the menu_items table consists of 32 rows.
 
@@ -44,7 +46,9 @@ Source of data: https://mavenanalytics.io/data-playground
 > 2. Extract a new column called `day_name` from date
 > 3. Extract a new column called `month_name` from date
 
-3. **Exploratory Data Analysis (EDA):** Analyze and answer the business questions listed below. 
+3. **Exploratory Data Analysis (EDA):** Analyze and answer the business questions listed below.
+> SQL Techniques employed:
+1. 
 
 
 ## Business Questions To Answer
@@ -63,8 +67,17 @@ Source of data: https://mavenanalytics.io/data-playground
 
 ### Sales Questions
 
-1. ----
-2. 2. ---
+1. What were the least and most ordered items? What categories were they in?
+2. What do the highest spend orders look like? Which items did they buy and how much did they spend?
+3. What is the gross sales for each category (cuisine) in total? How about for each month? Each Day?
+4. Which cuisines should we focus on developming more menu items for
+based on the data?
+
+/* What were the number of sales made in each time of the day
+per weekday? */ 
+
+/* Get each category (cuisine) and add a column showing "Good," "Bad," and "Average".
+Mark "Good" if it's greater than the average sales and "Bad" if it's lower than the average sales.*/
 
 ### Customer Questions
 
@@ -126,48 +139,7 @@ FROM menu_items;
 -- What categories (cuisine) does this restaurant have to offer?
 SELECT DISTINCT category 
 FROM menu_items;
--- ---------------------------------------------------------------------------------------
--- --------------------------- SALES QUESTIONS -------------------------------------------
- 
- /* What were the least and most ordered items?
- What categories were they in? */
- SELECT COUNT(order_details.order_details_id) AS number_of_items_ordered, 
-menu_items.menu_item_id, menu_items.item_name, menu_items.category
-FROM order_details
-	LEFT JOIN menu_items
-		ON menu_items.menu_item_id = order_details.item_id
-GROUP BY menu_item_id, item_name;
- 
- /* What do the highest spend orders look like?
- Which items did they buy and how much did they spend? */ 
- /* S1) Firstly, I will find the total amount that each person ordered. */ 
-SELECT order_details.order_id, SUM(menu_items.price) AS total_amount_each_person_spent
-FROM order_details
-	LEFT JOIN menu_items
-		ON menu_items.menu_item_id = order_details.item_id
-GROUP BY order_details.order_id
-ORDER BY totaL_amount_each_person_spent DESC
-LIMIT 3;
 
--- Next, to find what items each customer (order_id) they bought:
-SELECT order_details.order_id,  
-menu_items.item_name, menu_items.category
-FROM order_details
-	LEFT JOIN menu_items
-		ON menu_items.menu_item_id = order_details.item_id
-WHERE order_id IN (440, 2075,1957);
-
- 
-/* What is the gross sales for each category (cuisine) in total? How about for each month? Each Day? */
-
-/* Which cuisines should we focus on developming more menu items for
-based on the data? */
-
-/* What were the number of sales made in each time of the day
-per weekday? */ 
-
-/* Get each category (cuisine) and add a column showing "Good," "Bad," and "Average".
-Mark "Good" if it's greater than the average sales and "Bad" if it's lower than the average sales.*/
 
 -- ------------------------------------------------------------------------------------------------
 -- Shows the two tables joined: 
