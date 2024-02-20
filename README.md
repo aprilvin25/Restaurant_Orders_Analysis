@@ -4,8 +4,11 @@
 ## Aim of the Project
 In the food industry, an understanding of customer preferences is essential for having a successful business. This project dives into questions related to customer behavior and sales, exploring questions such as ‘What is the most popular cuisine?,’ ‘What is the average daily cost of sales?,’ and ‘Which day of the week have the highest record of sales?’
 
+
 ## About the Data
-This data set comes from Maven Analytics Data Playground. This dataset contains data for a quarter, specifically January, February and March. The order_details table comprises 12,097 rows, while the menu_items table consists of 32 rows. 
+This data set comes from Maven Analytics Data Playground. This dataset contains data for a quarter, specifically January, February and March. The order_details table comprises 12,097 rows, while the menu_items table consists of 32 rows.
+
+Source of data: https://mavenanalytics.io/data-playground 
 
 `Menu_items` Table:   
 
@@ -38,12 +41,10 @@ This data set comes from Maven Analytics Data Playground. This dataset contains 
 2. **Feature Engineering:** Create new columns from existing ones. 
 
 > 1. Extract a new column called `time_of_day` from date 
-
 > 2. Extract a new column called `day_name` from date
-
 > 3. Extract a new column called `month_name` from date
 
-2. **Exploratory Data Analysis (EDA):** Analyze and answer the business questions listed below. 
+3. **Exploratory Data Analysis (EDA):** Analyze and answer the business questions listed below. 
 
 
 ## Business Questions To Answer
@@ -52,6 +53,8 @@ This data set comes from Maven Analytics Data Playground. This dataset contains 
 
 1. How many months are in the dataset?
 2. What is the average price for each category (type of cuisine)?
+3. What is the average amount of customers who come in for each day of the week (for the 3 months of data)?
+
 
 ### Product Questions
 
@@ -70,25 +73,10 @@ This data set comes from Maven Analytics Data Playground. This dataset contains 
 
 
 
--- Finding the average amount of customers who come in for each day of the week, for the three months of data
 
-/* Step 1) Find the total number of customers per month and day of the week; 
-this will be the inner query of a subquery */
 
-SELECT COUNT(DISTINCT order_id) AS total_customers, month, day_name
-FROM order_details
-GROUP BY month, day_name ORDER BY total_customers DESC;
 
-/* Step 2) The average was rounded to the nearest whole integer, as you can't have a fraction of a person.
-Here, about 294 customers come in on average every Monday and about 236 customers come in on Saturday, on average*/
 
-SELECT ROUND(AVG(total_customers),0) AS average_total_customer, day_name
-FROM (
-	SELECT COUNT(DISTINCT order_id) AS total_customers, month, day_name
-	FROM order_details
-	GROUP BY month, day_name ORDER BY total_customers DESC
-    ) AS total_customers_count -- This is the inner query
-GROUP BY day_name;
 
 
 -- ---------------------------------------------------------------------------------------
