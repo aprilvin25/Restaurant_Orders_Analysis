@@ -1,10 +1,11 @@
-# TITLE
+# Analyzing Restaurant Orders Using SQL: A Step-by-Step Guide
 
-## About
 
 ## Aim of the Project
+In the food industry, an understanding of customer preferences is essential for having a successful business. This article dives into questions related to customer behavior and sales, exploring questions such as ‘What is the most popular cuisine?,’ ‘What is the average daily cost of sales?,’ and ‘Which day of the week have the highest record of sales?’
 
 ## About the Data
+This data set comes from Maven Analytics Data Playground. This dataset contains data for a quarter, specifically January, February and March. The order_details table comprises 12,097 rows, while the menu_items table consists of32 rows. 
 
 `Menu_items` Table:   
 
@@ -36,22 +37,21 @@
 
 2. **Feature Engineering:** Create new columns from existing ones. 
 
-> 1. Add a new column called `time_of_day` to
+> 1. Extract a new column called `time_of_day` from date 
 
-> 2. Add a new column called `day_name` to 
+> 2. Extract a new column called `day_name` from date
 
-> 3. Add a new column called `month_name` to
+> 3. Extract a new column called `month_name` from date
 
 2. **Exploratory Data Analysis (EDA):** Analyze and answer the business questions listed below. 
 
-3. **Conclusion:**
 
 ## Business Questions To Answer
 
 ### Generic Questions / Descriptive Statistics
 
 1. How many months are in the dataset?
-2.  
+2. What is the average price for each category (type of cuisine)?
 
 ### Product Questions
 
@@ -67,14 +67,6 @@
 
 1. ----
 2. ----
-
-
-
--- Finding the average price for each category (type of cuisine)
-SELECT ROUND(AVG(price),2) AS average_price, category
-FROM menu_items
-GROUP BY category
-ORDER BY average_price DESC;
 
 
 
